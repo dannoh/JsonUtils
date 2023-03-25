@@ -3,10 +3,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 using Newtonsoft.Json.Linq;
-using System.Data.Entity.Design.PluralizationServices;
-using System.Globalization;
 
 namespace Xamasoft.JsonClassGenerator
 {
@@ -251,14 +248,14 @@ namespace Xamasoft.JsonClassGenerator
                     break;
                 case JsonTypeEnum.NullableSomething:
                     if (IsNull(type2)) return type1;
-                    if (type2 == JsonTypeEnum.String) return JsonTypeEnum.String;
+                    if (type2 == JsonTypeEnum.String) return JsonTypeEnum.NullableString;
                     if (type2 == JsonTypeEnum.Integer) return JsonTypeEnum.NullableInteger;
                     if (type2 == JsonTypeEnum.Float) return JsonTypeEnum.NullableFloat;
                     if (type2 == JsonTypeEnum.Long) return JsonTypeEnum.NullableLong;
                     if (type2 == JsonTypeEnum.Boolean) return JsonTypeEnum.NullableBoolean;
                     if (type2 == JsonTypeEnum.Date) return JsonTypeEnum.NullableDate;
-                    if (type2 == JsonTypeEnum.Array) return JsonTypeEnum.Array;
-                    if (type2 == JsonTypeEnum.Object) return JsonTypeEnum.Object;
+                    if (type2 == JsonTypeEnum.Array) return JsonTypeEnum.NullableArray;
+                    if (type2 == JsonTypeEnum.Object) return JsonTypeEnum.NullableObject;
                     break;
                 case JsonTypeEnum.Object:
                     if (IsNull(type2)) return type1;
@@ -276,6 +273,10 @@ namespace Xamasoft.JsonClassGenerator
                     if (type2 == JsonTypeEnum.Array) return type1;
                     break;
                 case JsonTypeEnum.String:
+                    if (IsNull(type2)) return type1;
+                    if (type2 == JsonTypeEnum.String) return type1;
+                    break;
+                case JsonTypeEnum.NullableString:
                     if (IsNull(type2)) return type1;
                     if (type2 == JsonTypeEnum.String) return type1;
                     break;

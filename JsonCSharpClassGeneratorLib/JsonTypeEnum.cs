@@ -25,8 +25,9 @@ namespace Xamasoft.JsonClassGenerator
         Array,
         Dictionary,
         NullableSomething,
-        NonConstrained
-
-
+        NonConstrained,
+        NullableString,
+        NullableArray,
+        NullableObject
     }
 }

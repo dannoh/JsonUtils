@@ -1,7 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Linq;
 using System.Text;
 
 namespace Xamasoft.JsonClassGenerator.CodeWriters
@@ -39,8 +37,9 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 case JsonTypeEnum.NullableDate: return "DateTime?";
                 case JsonTypeEnum.NullableSomething: return "object";
                 case JsonTypeEnum.Object: return type.AssignedName;
+                case JsonTypeEnum.NullableString:
                 case JsonTypeEnum.String: return "String";
-                default: throw new System.NotSupportedException("Unsupported json type");
+                default: throw new NotSupportedException("Unsupported json type");
             }
         }
 

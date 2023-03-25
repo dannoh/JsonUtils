@@ -23,6 +23,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             switch (type.Type)
             {
                 case JsonTypeEnum.Anything: return "any";
+                case JsonTypeEnum.NullableString:
                 case JsonTypeEnum.String: return "string";
                 case JsonTypeEnum.Boolean: return "bool";
                 case JsonTypeEnum.Integer:

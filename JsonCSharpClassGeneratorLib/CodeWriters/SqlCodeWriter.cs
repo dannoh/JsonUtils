@@ -36,7 +36,8 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 case JsonTypeEnum.NullableDate: return "[datetime] NULL";
                 case JsonTypeEnum.NullableSomething: return "object NULL";
                 case JsonTypeEnum.Object: return type.AssignedName;
-                case JsonTypeEnum.String: return "[varchar](50) NULL";
+                case JsonTypeEnum.String: return "[nvarchar](50) NOT NULL";
+                case JsonTypeEnum.NullableString: return "[nvarchar](50) NULL";
                 default: throw new System.NotSupportedException("Unsupported json type");
             }
         }

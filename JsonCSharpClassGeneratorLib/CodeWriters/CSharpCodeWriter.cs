@@ -1,9 +1,5 @@
-﻿using Newtonsoft.Json;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.IO;
-using System.Linq;
-using System.Text;
 
 namespace Xamasoft.JsonClassGenerator.CodeWriters
 {
@@ -31,6 +27,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
             {
                 case JsonTypeEnum.Anything: return "object";
                 case JsonTypeEnum.Array: return arraysAsLists ? "IList<" + GetTypeName(type.InternalType, config) + ">" : GetTypeName(type.InternalType, config) + "[]";
+                case JsonTypeEnum.NullableArray: return arraysAsLists ? "IList<" + GetTypeName(type.InternalType, config) + ">?" : GetTypeName(type.InternalType, config) + "[]?";
                 case JsonTypeEnum.Dictionary: return "Dictionary<string, " + GetTypeName(type.InternalType, config) + ">";
                 case JsonTypeEnum.Boolean: return "bool";
                 case JsonTypeEnum.Float: return "double";
@@ -43,10 +40,11 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 case JsonTypeEnum.NullableInteger: return "int?";
                 case JsonTypeEnum.NullableLong: return "long?";
                 case JsonTypeEnum.NullableDate: return "DateTime?";
-                case JsonTypeEnum.NullableSomething: return "object";
+                case JsonTypeEnum.NullableSomething: return "object?";
                 case JsonTypeEnum.Object: return type.AssignedName;
                 case JsonTypeEnum.String: return "string";
-                default: throw new System.NotSupportedException("Unsupported json type");
+                case JsonTypeEnum.NullableString: return "string?";
+                default: throw new NotSupportedException("Unsupported json type");
             }
         }
 
