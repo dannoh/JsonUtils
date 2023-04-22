@@ -25,7 +25,7 @@ namespace Xamasoft.JsonClassGenerator.CodeWriters
                 case JsonTypeEnum.Anything: return "any";
                 case JsonTypeEnum.NullableString:
                 case JsonTypeEnum.String: return "string";
-                case JsonTypeEnum.Boolean: return "bool";
+                case JsonTypeEnum.Boolean: return "boolean";
                 case JsonTypeEnum.Integer:
                 case JsonTypeEnum.Long:
                 case JsonTypeEnum.Float: return "number";
